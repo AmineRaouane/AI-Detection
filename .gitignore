@@ -1,1 +1,9 @@
 **/env/
+**/loggers/*
+**/models/*
+**/outputs/*
+**/data/*
+!**/loggers/.gitkeep
+!**/models/.gitkeep
+!**/outputs/.gitkeep
+!**/data/.gitkeep
