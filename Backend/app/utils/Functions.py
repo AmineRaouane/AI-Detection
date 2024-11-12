@@ -9,17 +9,6 @@ from typing import Dict, Any
 import logging
 logger = logging.getLogger(__name__)
 
-def collate_fn(examples: list) -> dict:
-    try:
-        pixel_values = torch.stack([example["pixel_values"] for example in examples])
-        labels = torch.tensor([example['label'] for example in examples])
-        logger.info("Collate function applied to batch.")
-        return {"pixel_values": pixel_values, "labels": labels}
-
-    except Exception as e:
-        logger.error(f"Error in collate_fn: {e}")
-        raise e
-
 def compute_metrics(eval_pred) -> Dict[str, Any]:
     try:
         accuracy = evaluate.load("accuracy")
@@ -92,7 +81,7 @@ def compute_metrics(eval_pred) -> Dict[str, Any]:
         }
 
 def setup_logging(
-    log_file: str = 'app/Data/loggers/training.log',
+    log_file: str = 'app/image/Data/loggers/training.log',
     level: int = logging.INFO
 ) -> None:
     file_handler = logging.FileHandler(log_file)

@@ -15,3 +15,4 @@ accelerate
 optuna
 torchvision
 imbalanced-learn
+dask

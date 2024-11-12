@@ -1,7 +1,7 @@
-from app.Ml.steps.DataLoader import load_data,create_data
-from app.Ml.steps.DataPreprocessor import sample_data,compose_data
-from app.Ml.steps.DataSplitter import split_data
-from app.Ml.steps.ModelBuilder import (
+from app.image.Ml.steps.DataLoader import load_data,create_data
+from app.image.Ml.steps.DataPreprocessor import sample_data,compose_data
+from app.image.Ml.steps.DataSplitter import split_data
+from app.image.Ml.steps.ModelBuilder import (
     model_initializer,
     training_arguments_initializer,
     trainer_initializer
