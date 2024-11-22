@@ -1,24 +1,11 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import { Progress } from "@/components/ui/progress"
-import { ImageIcon,
-         FileTextIcon,
-         AudioWaveformIcon,
-         VideoIcon,
-         ScanIcon,
-         CircleX,
-         FileImage
-} from 'lucide-react';
 import { useState } from 'react';
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-  } from "@/components/ui/card"
+import { ScanIcon } from 'lucide-react';
+import TextContent from './app/files/Text';
+import ImageContent from './app/files/Image';
+import AudioContent from './app/files/Audio';
+import VideoContent from './app/files/Video';
 
 function App() {
   const [result, setResult] = useState<string | null>(null);
@@ -26,61 +13,19 @@ function App() {
   const [image, setImage] = useState<File | null>(null); // Image content
   const [audio, setAudio] = useState<File | null>(null); // Audio content
   const [video, setVideo] = useState<File | null>(null); // Video content
-  const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploadProgress, setUploadProgress] = useState<number>(0);
 
   const handleAnalyze = () => {
     const results = ['AI Generated', 'Human Created'];
     setResult(results[Math.floor(Math.random() * results.length)]);
   };
 
-  const handleImageUpload = async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setImage(file);
-
-    // Create a FormData object to send the file
-    const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-      const xhr = new XMLHttpRequest();
-
-      // Track upload progress
-      xhr.upload.onprogress = (event) => {
-        if (event.lengthComputable) {
-          const progress = (event.loaded / event.total) * 100;
-          setUploadProgress(progress);
-        }
-      };
-
-      // Handle completion
-      xhr.onload = () => {
-        if (xhr.status === 200) {
-          setUploadProgress(100);
-          // Handle successful upload
-        }
-      };
-
-      // Handle errors
-      xhr.onerror = () => {
-        setUploadProgress(0);
-        // Handle error
-      };
-
-      // Replace with your actual upload endpoint
-      xhr.open('POST', '/api/upload');
-      xhr.send(formData);
-
-    } catch (error) {
-      console.error('Upload failed:', error);
-      setUploadProgress(0);
-    }
-  };
-
-  const handleCancel = () => {
+  const handleTabSwitch = () => {
+    setResult(null);
+    setContent('');
     setImage(null);
-    setUploadProgress(0);
+    setAudio(null);
+    setVideo(null);
   };
 
   const isAnalyzeEnabled = content.trim() || image || audio || video;
@@ -97,154 +42,80 @@ function App() {
           </p>
         </header>
 
-        <Card className="bg-gray-800/50 border-gray-700">
-          <CardContent className="p-6">
-            <Tabs defaultValue="text" className="w-full">
-              <TabsList className="grid grid-cols-4 gap-4 bg-gray-900/50 p-1">
-                <TabsTrigger value="text" className="data-[state=active]:bg-cyan-500">
-                  <FileTextIcon className="mr-2 h-4 w-4" />
-                  Text
-                </TabsTrigger>
-                <TabsTrigger value="image" className="data-[state=active]:bg-cyan-500">
-                  <ImageIcon className="mr-2 h-4 w-4" />
-                  Image
-                </TabsTrigger>
-                <TabsTrigger value="audio" className="data-[state=active]:bg-cyan-500">
-                  <AudioWaveformIcon className="mr-2 h-4 w-4" />
-                  Audio
-                </TabsTrigger>
-                <TabsTrigger value="video" className="data-[state=active]:bg-cyan-500">
-                  <VideoIcon className="mr-2 h-4 w-4" />
-                  Video
-                </TabsTrigger>
-              </TabsList>
+        <div className="bg-gray-800/50 border-gray-700 rounded-lg p-6">
+          <Tabs defaultValue="text" className="w-full">
+            <TabsList className="grid grid-cols-4 gap-4 bg-gray-900/50 p-1">
+              <TabsTrigger value="text" className="data-[state=active]:bg-cyan-500" onClick={handleTabSwitch}>
+                Text
+              </TabsTrigger>
+              <TabsTrigger value="image" className="data-[state=active]:bg-cyan-500" onClick={handleTabSwitch}>
+                Image
+              </TabsTrigger>
+              <TabsTrigger value="audio" className="data-[state=active]:bg-cyan-500" onClick={handleTabSwitch}>
+                Audio
+              </TabsTrigger>
+              <TabsTrigger value="video" className="data-[state=active]:bg-cyan-500" onClick={handleTabSwitch}>
+                Video
+              </TabsTrigger>
+            </TabsList>
 
-              <div className="mt-8">
-                <TabsContent value="text">
-                  <Textarea
-                    placeholder="Enter your text here to analyze..."
-                    className="min-h-[300px] max-h-[300px] bg-gray-900/50 border-gray-700 text-gray-100"
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                  />
-                </TabsContent>
+            <div className="mt-8">
+              <TabsContent value="text">
+                <TextContent content={content} setContent={setContent} />
+              </TabsContent>
+              <TabsContent value="image">
+                <ImageContent
+                  image={image}
+                  setImage={setImage}
+                  uploadProgress={uploadProgress}
+                  setUploadProgress={setUploadProgress}
+                  setResult={setResult}
+                />
+              </TabsContent>
+              <TabsContent value="audio">
+                <AudioContent
+                  audio={audio}
+                  setAudio={setAudio}
+                  uploadProgress={uploadProgress}
+                  setUploadProgress={setUploadProgress}
+                  setResult={setResult}
+                />
+              </TabsContent>
+              <TabsContent value="video">
+                <VideoContent
+                  video={video}
+                  setVideo={setVideo}
+                  uploadProgress={uploadProgress}
+                  setUploadProgress={setUploadProgress}
+                  setResult={setResult}
+                />
+              </TabsContent>
+            </div>
 
-                <TabsContent value="image" className="gap-y-2 flex-col">
-                    <div className="border-2 border-dashed bg-gray-900/50 h-[300px] flex justify-center items-center border-gray-700 rounded-lg p-8 text-center">
-                        <input
-                          type="file"
-                          accept="image/*"
-                          className="hidden w-full h-full"
-                          id="image-upload"
-                          onChange={handleImageUpload}
-                        />
-                        <label
-                          htmlFor="image-upload"
-                          className="cursor-pointer flex flex-col items-center"
-                        >
-                          <ImageIcon className="h-12 w-12 text-gray-400 mb-4" />
-                          <span className="text-gray-400">
-                            Drop an image here or click to upload
-                          </span>
-                        </label>
-                    </div>
-                      {image && (
-                        <div className="border-2 border-dashed bg-gray-900/50 h-[100px] flex justify-around items-center border-gray-700 rounded-lg p-8 text-center">
-                          {/* <Button size="icon" className="text-white bg-inherit rounded-full"> */}
-                            <FileImage className="text-white bg-inherit rounded-full"/>
-                          {/* </Button> */}
-                          <div className="h-full flex flex-col gap-1 w-fit min-w-[80%]">
-                            <div className="flex text-white justify-between">
-                              <div>{image.name}</div>
-                              <div>{(image.size / 1024).toFixed(2)} KB</div>
-                            </div>
-                            <div>
-                              <Progress
-                                value={uploadProgress}
-                                className="transition-all duration-300"
-                              />
-                            </div>
-                          </div>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="text-white hover:text-red-600 hover:bg-inherit rounded-full"
-                            onClick={handleCancel}
-                          >
-                            <CircleX />
-                          </Button>
-                        </div>
-                      )}
-                </TabsContent>
+            <div className="mt-6 flex flex-col items-center gap-4">
+              <Button
+                onClick={handleAnalyze}
+                className="w-full bg-cyan-500 hover:bg-cyan-600 text-white"
+                disabled={!isAnalyzeEnabled}
+              >
+                <ScanIcon className="mr-2 h-4 w-4" />
+                Analyze Content
+              </Button>
 
-                <TabsContent value="audio">
-                  <div className="border-2 border-dashed bg-gray-900/50 h-[300px] flex justify-center items-center border-gray-700 rounded-lg p-8 text-center">
-                    <input
-                      type="file"
-                      accept="audio/*"
-                      className="hidden"
-                      id="audio-upload"
-                      onChange={(e) => setAudio(e.target.files?.[0] || null)}
-                    />
-                    <label
-                      htmlFor="audio-upload"
-                      className="cursor-pointer flex flex-col items-center"
-                    >
-                      <AudioWaveformIcon className="h-12 w-12 text-gray-400 mb-4" />
-                      <span className="text-gray-400">
-                        Drop an audio file here or click to upload
-                      </span>
-                    </label>
-                  </div>
-                </TabsContent>
-
-                <TabsContent value="video">
-                  <div className="border-2 border-dashed bg-gray-900/50 h-[300px] flex justify-center items-center border-gray-700 rounded-lg p-8 text-center">
-                    <input
-                      type="file"
-                      accept="video/*"
-                      className="hidden"
-                      id="video-upload"
-                      onChange={(e) => setVideo(e.target.files?.[0] || null)}
-                    />
-                    <label
-                      htmlFor="video-upload"
-                      className="cursor-pointer flex flex-col items-center"
-                    >
-                      <VideoIcon className="h-12 w-12 text-gray-400 mb-4" />
-                      <span className="text-gray-400">
-                        Drop a video file here or click to upload
-                      </span>
-                    </label>
-                  </div>
-                </TabsContent>
-
-                <div className="mt-6 flex flex-col items-center gap-4">
-                  <Button
-                    onClick={handleAnalyze}
-                    className="w-full bg-cyan-500 hover:bg-cyan-600 text-white"
-                    disabled={!isAnalyzeEnabled}
-                  >
-                    <ScanIcon className="mr-2 h-4 w-4" />
-                    Analyze Content
-                  </Button>
-
-                  {result && (
-                    <div
-                      className={`w-full p-4 rounded-lg text-center font-semibold ${
-                        result === 'AI Generated'
-                          ? 'bg-red-500/20 text-red-400'
-                          : 'bg-green-500/20 text-green-400'
-                      }`}
-                    >
-                      Result: {result}
-                    </div>
-                  )}
+              {result && (
+                <div
+                  className={`w-full p-4 rounded-lg text-center font-semibold ${
+                    result === 'AI Generated'
+                      ? 'bg-red-500/20 text-red-400'
+                      : 'bg-green-500/20 text-green-400'
+                  }`}
+                >
+                  Result: {result}
                 </div>
-              </div>
-            </Tabs>
-          </CardContent>
-        </Card>
+              )}
+            </div>
+          </Tabs>
+        </div>
       </div>
     </div>
   );

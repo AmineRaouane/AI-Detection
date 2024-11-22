@@ -1,5 +1,5 @@
 from app.utils.Functions import setup_logging
-from app.ML.pipelines.training import training_pipeline
+from app.image.ML.pipelines.training import training_pipeline
 import logging
 
 if __name__ == "__main__":
