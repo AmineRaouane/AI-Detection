@@ -35,8 +35,7 @@ export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-black/20 backdrop-blur-lg">
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <div className="footer-grid mb-12">
-          <div className="space-y-4">
+        <div className="space-y-4 mb-3">
             <div className="flex items-center gap-2 text-xl font-bold text-purple-400">
               <Sparkles className="h-5 w-5" />
               AI Detector
@@ -44,7 +43,8 @@ export function Footer() {
             <p className="text-sm text-gray-400 max-w-xs">
               Advanced AI detection powered by state-of-the-art machine learning algorithms.
             </p>
-          </div>
+        </div>
+        <div className="flex mb-12 justify-between">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h3 className="font-semibold mb-4 text-white">{category}</h3>

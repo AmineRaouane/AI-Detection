@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { Navbar } from "@/components/ui/navbar";
 import { Hero } from "@/components/ui/hero";
-// import { Detector } from "@/components/detector";
-import { Info } from "@/components/info";
-import { About } from "@/components/about";
-import { Pricing } from "@/components/pricing";
-import { Contact } from "@/components/contact";
-import { Footer } from "@/components/footer";
+// import { Detector } from "@/components/detector"; bg-[#0a0118]
+import { Info } from "@/components/features/info";
+import { About } from "@/components/features/about";
+import { Pricing } from "@/components/features/pricing";
+import { Contact } from "@/components/features/contact";
+import { Footer } from "@/components/features/footer";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
 
   return (
-    <div className="min-h-screen bg-[#0a0118] text-white relative">
+    <div className="min-h-screen bg-black text-white relative">
       <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
       <main className="relative z-10">

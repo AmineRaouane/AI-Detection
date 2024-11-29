@@ -1,5 +1,5 @@
 import { Shield, Zap, BarChart } from "lucide-react";
-import { Card } from "./ui/card";
+import { Card } from "@/components/ui/card";
 
 export function About() {
   const features = [

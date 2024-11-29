@@ -1,10 +1,11 @@
 import { Bot, Sparkles } from "lucide-react";
 import { Button } from "./button";
+import { Vortex } from "../ui/vortex";
 
 export function Hero() {
   return (
-    <div className="relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+    <div className="relative overflow-hidden bg-transparent">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center bg-transparent">
         <div className="relative z-10">
           <h1 className="text-7xl sm:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-6">
             AI Content Detection
@@ -37,3 +38,4 @@ export function Hero() {
     </div>
   );
 }
+// Vortex
