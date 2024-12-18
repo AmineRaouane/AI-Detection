@@ -14,6 +14,7 @@ export function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
     { name: "Home", value: "home" },
     { name: "Pricing", value: "pricing" },
     { name: "Products", value: "products" },
+    { name: "Detector", value: "detector" },
     { name: "About", value: "about" },
     { name: "Contact", value: "contact" },
   ];

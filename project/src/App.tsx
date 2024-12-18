@@ -7,6 +7,7 @@ import { Pricing } from "@/components/features/pricing";
 import { Contact } from "@/components/features/contact";
 import { Footer } from "@/components/features/footer";
 import { Products } from "@/components/features/products";
+import { Detector } from "@/components/app/main";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         {currentPage === "pricing" && <Pricing />}
         {currentPage === "contact" && <Contact />}
         {currentPage === "products" && <Products />}
+        {currentPage === "detector" && <Detector />}
       </main>
 
       <Footer />

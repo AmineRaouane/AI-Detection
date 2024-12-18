@@ -2,12 +2,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { ScanIcon } from 'lucide-react';
-import TextContent from './app/files/Text';
-import ImageContent from './app/files/Image';
-import AudioContent from './app/files/Audio';
-import VideoContent from './app/files/Video';
+import TextContent from '@/components/app/files/Text';
+import ImageContent from '@/components/app/files/Image';
+import AudioContent from '@/components/app/files/Audio';
+import VideoContent from '@/components/app/files/Video';
 
-function App() {
+export function Detector() {
   const [result, setResult] = useState<string | null>(null);
   const [content, setContent] = useState<string>(''); // Text content
   const [image, setImage] = useState<File | null>(null); // Image content
@@ -120,5 +120,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
