@@ -12,8 +12,9 @@ export function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
 
   const navItems = [
     { name: "Home", value: "home" },
-    { name: "About", value: "about" },
     { name: "Pricing", value: "pricing" },
+    { name: "Products", value: "products" },
+    { name: "About", value: "about" },
     { name: "Contact", value: "contact" },
   ];
 

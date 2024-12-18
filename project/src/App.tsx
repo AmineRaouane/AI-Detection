@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Navbar } from "@/components/ui/navbar";
 import { Hero } from "@/components/ui/hero";
-// import { Detector } from "@/components/detector"; bg-[#0a0118]
 import { Info } from "@/components/features/info";
 import { About } from "@/components/features/about";
 import { Pricing } from "@/components/features/pricing";
 import { Contact } from "@/components/features/contact";
 import { Footer } from "@/components/features/footer";
+import { Products } from "@/components/features/products";
+
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -25,6 +26,7 @@ function App() {
         {currentPage === "about" && <About />}
         {currentPage === "pricing" && <Pricing />}
         {currentPage === "contact" && <Contact />}
+        {currentPage === "products" && <Products />}
       </main>
 
       <Footer />

@@ -7,7 +7,7 @@ export function Hero() {
     return (
         <div className="relative overflow-hidden bg-transparent">
             <div className="mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center bg-transparent">
-                <div className="h-[40rem] w-full flex flex-col items-center justify-center overflow-hidden rounded-md">
+                <div className="h-[30rem] w-full flex flex-col items-center justify-center overflow-hidden rounded-md">
                     <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20">
                         Pragmatia
                     </h1>
@@ -32,11 +32,11 @@ export function Hero() {
                     </div>
                 </div>
                 <div className="relative z-10">
-                    <h1 className="text-8xl sm:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-6">
+                    {/* <h1 className="text-8xl sm:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-6">
                         AI Content Detection
                         <br />
                         Made Simple
-                    </h1>
+                    </h1> */}
                     <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                         Advanced machine learning algorithms to detect AI-generated content with
                         high accuracy. Perfect for educators, publishers, and content managers.
