@@ -4,29 +4,20 @@ from dotenv import load_dotenv, find_dotenv
 import os
 
 load_dotenv(find_dotenv())
-IMAGE_AI_DETECTION = os.getenv("IMAGE_AI_DETECTION")
 
 class AIDetector(ABC):
+
+    def __init__(self):
+        self.TOKEN = os.getenv("TOKEN")
+
     @abstractmethod
     def process(self, file):
         pass
 
 class ImageDetector(AIDetector):
-    def __init__(self,model_name="R1Amine/ImageAiDetection"):
-        self.model = ViTForImageClassification.from_pretrained(
-            model_name, use_auth_token = IMAGE_AI_DETECTION
-        )
-        self.processor = ViTImageProcessor.from_pretrained(
-            model_name, use_auth_token = IMAGE_AI_DETECTION
-        )
-        self.pipeline = pipeline(
-            'image-classification',
-            model=self.model,
-            image_processor=self.processor,
-            device=-1
-        )
     def process(self, file):
-        return self.pipeline(file)
+        pipe = pipeline("image-classification", model="R1Amine/ImageAiDetection", token=self.TOKEN)
+        return pipe(file)
 
 
 class AudioDetector(AIDetector):
