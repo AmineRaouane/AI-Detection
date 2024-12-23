@@ -12,6 +12,7 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
+import { InfiniteCards } from "@/components/features/movingComments";
 import {
     Carousel,
     CarouselContent,
@@ -249,6 +250,7 @@ export function Home() {
                     </Carousel>
                 </Card>
             </div>
+            <InfiniteCards comments={userComments}/>
         </>
     );
 }
