@@ -87,7 +87,7 @@ export const benefits = [
     },
     {
       text: "detect",
-      className: "text-blue-500 dark:text-blue-500",
+      className: "font-bold bg-clip-text mb-4 text-transparent bg-gradient-to-r from-purple-400 to-pink-600",
     },
     {
       text: "the",

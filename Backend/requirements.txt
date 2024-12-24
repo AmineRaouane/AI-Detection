@@ -1,18 +1,5 @@
-# fastapi
-# uvicorn
-# python-multipart
-pillow
-torch
-numpy
-kaggle
+fastapi
+uvicorn
 transformers
-datasets
-scikit-learn
-evaluate
-mlflow
-pandas
-accelerate
-optuna
-torchvision
-imbalanced-learn
-dask
+python-dotenv
+python-multipart

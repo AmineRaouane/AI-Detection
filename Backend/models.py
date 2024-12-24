@@ -1,33 +1,16 @@
-from transformers import ViTImageProcessor,ViTForImageClassification,pipeline
+from transformers import pipeline
 from abc import ABC, abstractmethod
 from dotenv import load_dotenv, find_dotenv
 import os
 
 load_dotenv(find_dotenv())
 
-class AIDetector(ABC):
-
-    def __init__(self):
-        self.TOKEN = os.getenv("TOKEN")
-
-    @abstractmethod
+class AIDetector:
+    def __init__(self,categorie):
+        self.pipe = pipeline(
+            f"{categorie.lower()}-classification",
+            model=f"R1Amine/{categorie.capitalize()}AiDetection",
+            token=os.getenv("TOKEN")
+        )
     def process(self, file):
-        pass
-
-class ImageDetector(AIDetector):
-    def process(self, file):
-        pipe = pipeline("image-classification", model="R1Amine/ImageAiDetection", token=self.TOKEN)
-        return pipe(file)
-
-
-class AudioDetector(AIDetector):
-    def process(self, file):
-        pass
-
-class TextDetector(AIDetector):
-    def process(self, file):
-        pass
-
-class VideoDetector(AIDetector):
-    def process(self, file):
-        pass
+        return self.pipe(file)
