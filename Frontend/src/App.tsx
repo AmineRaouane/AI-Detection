@@ -6,8 +6,9 @@ import { Pricing } from "@/components/features/pricing";
 import { Contact } from "@/components/features/contact";
 import { Footer } from "@/components/features/footer";
 import { Products } from "@/components/features/products";
-import { Team } from "@/components/features/Team";
 import { Detector } from "@/components/app/main";
+import { Team } from "@/components/features/Team";
+import { Login } from "@/components/features/Login";
 import { Signup } from "@/components/features/Signup";
 
 function App() {
@@ -24,7 +25,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/products" element={<Products />} />
             <Route path="/detector" element={<Detector />} />
-            <Route path="/team" element={<Team />} />
+            <Route path="/Team" element={<Team />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
         </main>
