@@ -1,31 +1,16 @@
-import { Progress } from '@/components/ui/progress';
-import { Button } from '@/components/ui/button';
 import { AudioLines } from 'lucide-react';
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 function AudioContent({
   audio,
   setAudio,
-  uploadProgress,
-  setUploadProgress,
-  setResult,
 }: {
   audio: File | null;
   setAudio: (file: File | null) => void;
-  uploadProgress: number;
-  setUploadProgress: (progress: number) => void;
-  setResult: () => void;
 }) {
   const handleAudioUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) setAudio(file);
-  };
-
-  const handleCancel = () => {
-    setAudio(null);
-    setUploadProgress(0);
-    setResult(null);
   };
 
   return (

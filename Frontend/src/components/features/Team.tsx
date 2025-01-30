@@ -1,8 +1,3 @@
-import { Card } from "@/components/ui/card";
-import React, { useState, useEffect } from "react";
-import { faqData } from "@/components/data/faqData";
-import { FAQItem } from "@/components/features/FaqItem";
-import { features } from "@/components/data/about";
 import {testimonials} from "@/components/data/team";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials"
 

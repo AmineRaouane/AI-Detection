@@ -1,12 +1,10 @@
-import { Bot, Sparkles } from "lucide-react";
 import { SparklesCore } from "@/components/ui/sparkles";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -14,19 +12,11 @@ import {
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import { InfiniteCards } from "@/components/features/movingComments";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
-import {
-  Star,
-  StarHalf,
-  UserRound,
-  BrainCircuit,
-  UserCircle,
+  Bot,
+  Sparkles,
+  Timer,
+  Factory,
+  Network,
 } from "lucide-react";
 import {
   benefits,
@@ -35,25 +25,16 @@ import {
   words,
 } from "@/components/data/home";
 
-interface StarRatingProps {
-  rating: number;
-}
-const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
-  const fullStars = Math.floor(rating);
-  const hasHalfStar = rating % 1 >= 0.5;
-
-  return (
-    <div className="flex flex-row items-center">
-      {Array.from({ length: fullStars }).map((_, index) => (
-        <Star key={`full-star-${index}`} className="text-yellow-500" />
-      ))}
-      {hasHalfStar && <StarHalf className="text-yellow-500" />}
-    </div>
-  );
-};
+const icons = [
+  <Factory size={50} color="#ffffff" />,
+  <Timer size={50} color="#ffffff" />,
+  <Bot size={50} color="#ffffff" />,
+  <Network size={50} color="#ffffff" />,
+];
 
 export function Home() {
   const [activeTab, setActiveTab] = useState(features[0]?.id || "upload");
+
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveTab((prevTab) => {
@@ -75,7 +56,7 @@ export function Home() {
             <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20">
               Pragmatia
             </h1>
-            <div className="w-[40rem] h-40 relative">
+            <div className="w-[60rem] h-40 relative">
               <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
               <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
               <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
@@ -84,7 +65,7 @@ export function Home() {
                 background="transparent"
                 minSize={0.4}
                 maxSize={1}
-                particleDensity={1200}
+                particleDensity={800}
                 className="w-full h-full"
                 particleColor="#FFFFFF"
               />
@@ -181,7 +162,7 @@ export function Home() {
               >
                 <Card className="bg-transparent backdrop-blur-sm cursor-pointer transition-all duration-300 flex flex-row items-center min-h-[200px] border border-transparent hover:border-white/20 hover:bg-white/10">
                   <CardHeader className="w-1/3 h-full flex items-center justify-center">
-                    <BrainCircuit size={40} color="#ffffff" />
+                    {icons[index]}
                   </CardHeader>
                   <CardContent className="flex-grow p-4">
                     <h2 className="text-xl font-semibold text-white mb-2">
@@ -203,7 +184,7 @@ export function Home() {
         </Card>
         {/*  */}
       </div>
-      <InfiniteCards comments={userComments} speed="20s" />
+      <InfiniteCards comments={userComments} speed="30s" />
     </>
   );
 }

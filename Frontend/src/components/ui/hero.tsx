@@ -1,6 +1,5 @@
 import { Bot, Sparkles } from "lucide-react";
 import { Button } from "./button";
-import { Vortex } from "../ui/vortex";
 import { SparklesCore } from "@/components/ui/sparkles";
 
 export function Hero() {

@@ -2,9 +2,6 @@ import {
     Shield,
     Zap,
     BarChart,
-    HelpCircle,
-    ChevronDown,
-    ChevronUp,
   } from "lucide-react";
 
 export const features = [

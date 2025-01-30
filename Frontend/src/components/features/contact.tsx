@@ -1,4 +1,4 @@
-import { Mail, MessageSquare, Phone, Facebook, Instagram } from "lucide-react";
+import { Mail, MessageSquare, Phone, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -21,16 +21,6 @@ export function Contact() {
         <WorldMap
           dots={[
             {
-              start: {
-                lat: 64.2008,
-                lng: -149.4937,
-              }, // Alaska (Fairbanks)
-              end: {
-                lat: 34.0522,
-                lng: -118.2437,
-              }, // Los Angeles
-            },
-            {
               start: { lat: 64.2008, lng: -149.4937 }, // Alaska (Fairbanks)
               end: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
             },
@@ -46,10 +36,6 @@ export function Contact() {
               start: { lat: 28.6139, lng: 77.209 }, // New Delhi
               end: { lat: 43.1332, lng: 131.9113 }, // Vladivostok
             },
-            {
-              start: { lat: 28.6139, lng: 77.209 }, // New Delhi
-              end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
-            },
           ]}
         />
       </div>
@@ -63,39 +49,7 @@ export function Contact() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-4">
-          <div className="space-y-7">
-            <Card className="p-6 bg-black/50 border-purple-500/20 backdrop-blur-lg">
-              <div className="flex items-center">
-                <Instagram className="h-6 w-6 text-purple-400 mr-3" />
-                <div>
-                  <h3 className="font-semibold text-white">Our Instagram</h3>
-                  <p className="text-gray-400">aidetector</p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-6 bg-black/50 border-purple-500/20 backdrop-blur-lg">
-              <div className="flex items-center">
-                <Facebook className="h-6 w-6 text-purple-400 mr-3" />
-                <div>
-                  <h3 className="font-semibold text-white">Our facebook</h3>
-                  <p className="text-gray-400">aidetector</p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-6 bg-black/50 border-purple-500/20 backdrop-blur-lg">
-              <div className="flex items-center">
-                <MessageSquare className="h-6 w-6 text-purple-400 mr-3" />
-                <div>
-                  <h3 className="font-semibold text-white">Live Chat</h3>
-                  <p className="text-gray-400">Available 24/7</p>
-                </div>
-              </div>
-            </Card>
-          </div>
-
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Card className="p-6 bg-black/50 border-purple-500/20 backdrop-blur-lg">
             <form className="space-y-6">
               <div>
@@ -114,7 +68,7 @@ export function Contact() {
               <div>
                 <Textarea
                   placeholder="Your Message"
-                  className="min-h-[130px] bg-white/10 border-purple-500/20"
+                  className="min-h-[175px] bg-white/10 border-purple-500/20"
                 />
               </div>
               <Button className="w-full bg-purple-600 hover:bg-purple-700">
@@ -153,9 +107,52 @@ export function Contact() {
                 </div>
               </div>
             </Card>
+
+            <Card className="p-6 bg-black/50 border-purple-500/20 backdrop-blur-lg">
+              <div className="flex items-center">
+                <Instagram className="h-6 w-6 text-purple-400 mr-3" />
+                <div>
+                  <h3 className="font-semibold text-white">Our Instagram</h3>
+                  <p className="text-gray-400">aidetector</p>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </div>
     </>
   );
+}
+{
+  /* <div className="space-y-7">
+<Card className="p-6 bg-black/50 border-purple-500/20 backdrop-blur-lg">
+  <div className="flex items-center">
+    <Instagram className="h-6 w-6 text-purple-400 mr-3" />
+    <div>
+      <h3 className="font-semibold text-white">Our Instagram</h3>
+      <p className="text-gray-400">aidetector</p>
+    </div>
+  </div>
+</Card>
+
+<Card className="p-6 bg-black/50 border-purple-500/20 backdrop-blur-lg">
+  <div className="flex items-center">
+    <Facebook className="h-6 w-6 text-purple-400 mr-3" />
+    <div>
+      <h3 className="font-semibold text-white">Our facebook</h3>
+      <p className="text-gray-400">aidetector</p>
+    </div>
+  </div>
+</Card>
+
+<Card className="p-6 bg-black/50 border-purple-500/20 backdrop-blur-lg">
+  <div className="flex items-center">
+    <MessageSquare className="h-6 w-6 text-purple-400 mr-3" />
+    <div>
+      <h3 className="font-semibold text-white">Live Chat</h3>
+      <p className="text-gray-400">Available 24/7</p>
+    </div>
+  </div>
+</Card>
+</div> */
 }

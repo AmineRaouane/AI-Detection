@@ -1,32 +1,18 @@
-import { Progress } from '@/components/ui/progress';
-import { Button } from '@/components/ui/button';
-import { ImageIcon, CircleX, FileImage } from 'lucide-react';
-import { motion } from "framer-motion";
+import { ImageIcon} from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 function ImageContent({
   image,
-  setImage,
-  uploadProgress,
-  setUploadProgress,
-  setResult
+  setImage
 }: {
   image: File | null;
   setImage: (file: File | null) => void;
-  uploadProgress: number;
-  setUploadProgress: (progress: number) => void;
-  setResult:() => void;
 }) {
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) setImage(file);
   };
 
-  const handleCancel = () => {
-    setImage(null);
-    setUploadProgress(0);
-    setResult(null);
-  };
 
   return (
     <div className="gap-y-2 flex-col">

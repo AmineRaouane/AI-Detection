@@ -1,5 +1,3 @@
-import { GalleryVerticalEnd } from "lucide-react"
-
 import { LoginForm } from "@/components/ui/login-form"
 
 export function Login() {
@@ -11,4 +9,3 @@ export function Login() {
     </div>
   )
 }
-//<div className="py-24 px-4 max-w-7xl mx-auto">

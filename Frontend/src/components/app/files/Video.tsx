@@ -1,32 +1,17 @@
-import { Progress } from '@/components/ui/progress';
-import { Button } from '@/components/ui/button';
-import { VideoIcon, CircleX, FileVideo } from 'lucide-react';
-import { motion } from "framer-motion";
+import { VideoIcon } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 function VideoContent({
     video,
-    setVideo,
-    uploadProgress,
-    setUploadProgress,
+    setVideo
 }: {
     video: File | null;
     setVideo: (file: File | null) => void;
-    uploadProgress: number;
-    setUploadProgress: (progress: number) => void;
-    setResult: () => void;
 }) {
     const handleVideoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) setVideo(file);
     };
-
-    const handleCancel = () => {
-        setVideo(null);
-        setUploadProgress(0);
-        setResult(null);
-    };
-
     return (
         <div className="gap-y-2 flex-col">
             <div className="border-2 border-dashed bg-gray-900/50 h-[300px] flex justify-center items-center border-gray-700 rounded-lg p-8 text-center">
