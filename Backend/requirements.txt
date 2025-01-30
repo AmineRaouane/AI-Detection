@@ -3,3 +3,6 @@ uvicorn
 transformers
 python-dotenv
 python-multipart
+pillow
+torch
+av

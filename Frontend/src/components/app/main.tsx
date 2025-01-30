@@ -42,7 +42,7 @@ export function Detector() {
           if (!content.trim()) {
             throw new Error("Please enter some text to analyze");
           }
-          endpoint = "/upload/text";
+          endpoint = "/detect/text";
           requestOptions.body = JSON.stringify({ file: content.trim() });
           requestOptions.headers = { "Content-Type": "application/json" }; // Set headers as an object
           break;
@@ -60,7 +60,7 @@ export function Detector() {
           if (!audio) {
             throw new Error("Please select an audio file to analyze");
           }
-          endpoint = "/upload/audio";
+          endpoint = "/detect/audio";
           formData.append("file", audio);
           requestOptions.body = formData;
           break;
@@ -69,7 +69,7 @@ export function Detector() {
           if (!video) {
             throw new Error("Please select a video file to analyze");
           }
-          endpoint = "/upload/video";
+          endpoint = "/detect/video";
           formData.append("file", video);
           requestOptions.body = formData;
           break;
