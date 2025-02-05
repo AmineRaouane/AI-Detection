@@ -10,3 +10,4 @@ class AIDetector:
         )
     def process(self, file):
         return self.pipe(file)
+

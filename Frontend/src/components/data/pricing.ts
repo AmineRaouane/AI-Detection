@@ -27,7 +27,7 @@ export const plans = [
     "5,000 analyses per month",
     "Premium reporting",
     "24/7 priority support",
-    "Dedicated account manager",
+    "account manager",
     ],
   },
   {
@@ -37,7 +37,7 @@ export const plans = [
     "Unlimited analyses",
     "Custom reporting",
     "24/7 support",
-    "Dedicated account manager",
+    "account manager",
     ],
   },
   ];
